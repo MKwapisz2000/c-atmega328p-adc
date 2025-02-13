@@ -12,12 +12,6 @@ void ADC_init()
   ADCSRA |= (1<<ADPS0);
   ADCSRA |= (1<<ADPS1);
   ADCSRA |= (1<<ADPS2);
-
-  //kanał
-  ADMUX &= ~(1<<MUX0);
-  ADMUX &= ~(1<<MUX1);
-  ADMUX &= ~(1<<MUX2);
-  ADMUX &= ~(1<<MUX3);
   
   //włączenie ADC
   ADCSRA |= (1<<ADEN);
@@ -26,7 +20,13 @@ void ADC_init()
 
 int channelA0()
 {
-   ADCSRA |= (1<<ADSC);
+  //kanał
+  ADMUX &= ~(1<<MUX0);
+  ADMUX &= ~(1<<MUX1);
+  ADMUX &= ~(1<<MUX2);
+  ADMUX &= ~(1<<MUX3);
+  
+  ADCSRA |= (1<<ADSC);
 
   while(ADCSRA & (1<<ADSC))
   {}
@@ -43,7 +43,7 @@ int channelA3()
   ADMUX &= ~(1<<MUX2);
   ADMUX &= ~(1<<MUX3);
 
-   ADCSRA |= (1<<ADSC);
+  ADCSRA |= (1<<ADSC);
 
   while(ADCSRA & (1<<ADSC))
   {}
@@ -67,20 +67,17 @@ int main()
   int resultA0 = 0;
   float napiecieA0 = 0.0;
   
-   int resultA3 = 0;
+  int resultA3 = 0;
   float napiecieA3 = 0.0;
   
 
-
   while(1)
   {
-    
     resultA0 = channelA0();
     napiecieA0 = resultA0*5.0/1023.0;
     
     resultA3 = channelA3();
     napiecieA3 = resultA3*5.0/1023.0;
-
 
     if(napiecieA0 > 2.5)
     {
@@ -98,16 +95,7 @@ int main()
     {
       PORTD &= ~(1<<PD3);
     }
-    /*
-    if(napiecie > 4.75)
-    {
-      PORTD |= (1<<PD4);
-    }
-    else
-    {
-      PORTD &= ~(1<<PD4);
-    }*/
-
+   
   }
   return 0;
 }
