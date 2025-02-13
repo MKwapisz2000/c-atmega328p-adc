@@ -9,10 +9,10 @@ Features:
 
 - ADC initialization using registers
 
-- Reading voltage value from A0 channel
+- Reading voltage value from A0 and A3 channels
 
-- Using ATmega328P microcontroller in pure C
-
+- Controlling LED indicators based on the measured voltage
+  
 Hardware Requirements:
 
 - ATmega328P (e.g., Arduino Nano or standalone AVR)
@@ -27,7 +27,7 @@ Usage Instructions:
 
 - Upload the program to the microcontroller using an ISP programmer.
 
-- Read ADC values in the serial monitor or use them for further processing.
+- Observe the LED indicators changing based on the measured voltage.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ Funkcjonalność:
 
 - Inicjalizacja ADC przy użyciu rejestrów
 
-- Odczyt wartości napięcia na kanale A0
+- Odczyt wartości napięcia na kanale A0 oraz A3
 
 - Obsługa mikrokontrolera ATmega328P w czystym C
 
@@ -57,5 +57,5 @@ Instrukcja użytkowania:
 
 - Wgraj program do mikrokontrolera przy użyciu programatora ISP.
 
-- Odczytuj wartości ADC w monitorze szeregowym lub wykorzystaj je do dalszej analizy.
+- Obserwuj zapalanie się diod w zależności od odczytanego napięcia. 
 
